@@ -10,7 +10,14 @@ class SpellController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		// grab everything for side links
+		$races = Races::get();
+		$classes = Classes::get();
+
+		// grab all spells
+		$spells = Spells::get();
+
+		return View::make('spells')->with(compact('races', 'classes', 'spells'));
 	}
 
 	/**
