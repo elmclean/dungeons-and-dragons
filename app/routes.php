@@ -13,5 +13,9 @@
 
 Route::get('/', function()
 {
-	return View::make('index');
+	return Redirect::route('dnd.index');
 });
+
+Route::get('/dnd', array('as' => 'dnd.index', 'uses' => 'ResourceController@index'));
+
+Route::get('/dnd/race/{name}', array('as' => 'dnd.race', 'uses' => 'RaceController@show'));
