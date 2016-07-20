@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <h1 class="page-header">New to D&D? <small>Take Part in the Story</small></h1>
+        <h1 class="page-header">New to Dungeons & Dragons? <small>Take Part in the Story</small></h1>
         <p class="lead">The core of Dungeons & Dragons is storytelling. You and your friends tell a story together, guiding your heroes through quests for treasure, battles with deadly foes, daring rescues, courtly intrigue, and much more.</p>
 
         <p>You can also explore the world of Dungeons & Dragons through any of the novels written by its fantasy authors, as well as engaging board games and immersive video games. All of these stories are part of D&D.</p>

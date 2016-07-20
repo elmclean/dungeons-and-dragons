@@ -18,6 +18,21 @@ class ResourceController extends \BaseController {
 	}
 
 	/**
+	 * Display a listing of the resource.
+	 * GET /resource
+	 *
+	 * @return Response
+	 */
+	public function rules()
+	{
+		// grab everything for side links
+		$races = Races::get();
+		$classes = Classes::get();
+
+		return View::make('basic')->with(compact('races', 'classes'));
+	}
+
+	/**
 	 * Show the form for creating a new resource.
 	 * GET /resource/create
 	 *

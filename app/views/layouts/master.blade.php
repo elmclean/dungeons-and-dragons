@@ -35,7 +35,7 @@
     <!-- DataTables JavaScript -->
     <script src="/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -55,7 +55,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('dnd.index') }}">5th Edition Dungeons & Dragons Resources</a>
+                <a class="navbar-brand" href="{{ route('dnd.index') }}">5th Edition D&D Resources</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -64,6 +64,9 @@
                     <ul class="nav" id="side-menu">
                         <li>
                             <a href="{{ route('dnd.index') }}"><i class="fa fa-star fa-fw"></i> Home Page</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('dnd.rules') }}"><i class="fa fa-book fa-fw"></i> Basic Rules</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-pencil fa-fw"></i> Races<span class="fa arrow"></span></a>
@@ -107,73 +110,10 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{ route('dnd.spells') }}"><i class="fa fa-edit fa-fw"></i> Spell List</a>
+                            <a href="{{ route('dnd.spells') }}"><i class="glyphicon glyphicon-th-list"></i> Spell List</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="#">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="#">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="#">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="#"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="#">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li class="active">
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a class="active" href="#">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="#">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="{{ route('dnd.monsters') }}"><i class="glyphicon glyphicon-th-list"></i> Monster List</a>
                         </li>
                     </ul>
                 </div>
