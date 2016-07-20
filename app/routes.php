@@ -17,7 +17,9 @@ Route::get('/', function()
 });
 
 Route::get('/dnd', array('as' => 'dnd.index', 'uses' => 'ResourceController@index'));
+Route::get('/dnd/basic-rules', array('as' => 'dnd.rules', 'uses' => 'ResourceController@rules'));
 
 Route::get('/dnd/race/{name}', array('as' => 'dnd.race', 'uses' => 'RaceController@show'));
 
 Route::get('/dnd/spell-list', array('as' => 'dnd.spells', 'uses' => 'SpellController@index' ));
+Route::get('/dnd/monster-list', array('as' => 'dnd.monsters', 'uses' => 'MonsterController@index' ));
