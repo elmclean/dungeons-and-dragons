@@ -2,13 +2,13 @@
 
 class Subraces extends \Eloquent {
 	protected $table = 'subraces';
-    protected $primaryKey = "id";
+    protected $primaryKey = "subrace_id";
 	public $timestamps = false;
 
 	/**
-	 * A subrace has many ?
+	 * A subrace belongs to a race
 	 */
-	// public function investigator(){
-	// 	return $this->hasMany('Investigator','application_id');
+	// public function races(){
+	// 	return $this->belongsTo('Races', 'race_id');
 	// }
 }
