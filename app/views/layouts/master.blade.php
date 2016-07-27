@@ -82,30 +82,11 @@
                         <li>
                             <a href="#"><i class="fa fa-pencil fa-fw"></i> Classes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Barbarian</a>
-                                </li>
-                                <li>
-                                    <a href="#">Bard</a>
-                                </li>
-                                <li>
-                                    <a href="#">Cleric</a>
-                                </li>
-                                <li>
-                                    <a href="#">Druid</a>
-                                </li>
-                                <li>
-                                    <a href="#">Fighter</a>
-                                </li>
-                                <li>
-                                    <a href="#">Monk</a>
-                                </li>
-                                <li>
-                                    <a href="#">Half-Elf</a>
-                                </li>
-                                <li>
-                                    <a href="#">Paladin</a>
-                                </li>
+                                @foreach($classes as $class)
+                                    <li>
+                                        <a href="{{ route('dnd.class', $class->class_name) }}">{{ $class->class_name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

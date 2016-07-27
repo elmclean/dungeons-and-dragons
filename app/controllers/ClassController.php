@@ -42,9 +42,15 @@ class ClassController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($name)
 	{
-		//
+		// grab everything for side links
+		$races = Races::get();
+		$classes = Classes::get();
+
+		// singular class
+		$class = Classes::where('class_name', $name)->first();
+		return View::make('class')->with(compact('races', 'classes', 'class'));
 	}
 
 	/**
