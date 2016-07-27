@@ -3,6 +3,9 @@
 
 <div class="col-xs-12">
 	<h1 class="page-header">Basic Rules</h1>
+	<p>A downloadable PDF of the <a href="http://media.wizards.com/2016/downloads/DND/PlayerBasicRulesV03.pdf" target="_blank">Player's Basic Rules can be found here.</a></p>
+	<p>A doubloadable PDF of the <a href="http://media.wizards.com/2016/downloads/DND/DMBasicRulesV05.pdf" target="_blank">Dungeon Master's Basic Rules can be found here.</a></p>
+
 	<div>
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
