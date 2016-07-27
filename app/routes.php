@@ -24,3 +24,4 @@ Route::get('/dnd/class/{name}', array('as' => 'dnd.class', 'uses' => 'ClassContr
 
 Route::get('/dnd/spell-list', array('as' => 'dnd.spells', 'uses' => 'SpellController@index' ));
 Route::get('/dnd/monster-list', array('as' => 'dnd.monsters', 'uses' => 'MonsterController@index' ));
+Route::get('/dnd/item-list', array('as' => 'dnd.items', 'uses' => 'ItemsController@index' ));

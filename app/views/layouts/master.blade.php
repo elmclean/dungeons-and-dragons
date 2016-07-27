@@ -91,6 +91,9 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="{{ route('dnd.items') }}"><i class="glyphicon glyphicon-th-list"></i> Items List</a>
+                        </li>
+                        <li>
                             <a href="{{ route('dnd.spells') }}"><i class="glyphicon glyphicon-th-list"></i> Spell List</a>
                         </li>
                         <li>
