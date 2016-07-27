@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <h1 class="page-header">5e Class: {{ $race->race_name }} Traits</h1>
+        <h1 class="page-header">5e Race: {{ $race->race_name }} Traits</h1>
         {{ HTML::image('images/' . strtolower($race->race_name) . '.jpg', '', array('class' => 'col-xs-12 col-md-5 col-lg-4 img-responsive')) }}
    
 		<dl class="dl-horizontal col-xs-12 col-md-7 col-lg-8">
@@ -24,6 +24,7 @@
 	</div>
 </div>
 
+@if(count($subraces) > 0)
 <div class="row">
 	<h3>{{ $race->race_name }} Subraces</h3>
 	@foreach($subraces as $subrace)
@@ -36,7 +37,7 @@
 	    </dl>
 		<p>{{ $subrace->race_description }}</p>
 	@endforeach
-
 </div>
+@endif
 
 @stop

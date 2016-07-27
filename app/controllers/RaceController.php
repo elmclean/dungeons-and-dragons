@@ -48,9 +48,9 @@ class RaceController extends \BaseController {
 		$races = Races::get();
 		$classes = Classes::get();
 
-		// singular class
+		// singular race
 		$race = Races::where('race_name', $name)->first();
-		$subraces = Subraces::where('race_id', $race->race_id)->get();
+		$subraces = Subraces::where('parent_race', $race->race_id)->get();
 		
 		return View::make('race')->with(compact('races', 'classes', 'race', 'subraces'));
 	}
