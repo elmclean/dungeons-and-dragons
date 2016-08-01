@@ -23,6 +23,30 @@ class ResourceController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	public function loginIndex()
+	{
+		return View::make('layouts.login');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 * GET /resource
+	 *
+	 * @return Response
+	 */
+	public function login()
+	{
+		$inputs = Input::all();
+		authenticate($inputs['username'], $inputs['password']);
+		dd('in the login function');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 * GET /resource
+	 *
+	 * @return Response
+	 */
 	public function rules()
 	{
 		// grab everything for side links

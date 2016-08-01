@@ -17,6 +17,10 @@ Route::get('/', function()
 });
 
 Route::get('/dnd', array('as' => 'dnd.index', 'uses' => 'ResourceController@index'));
+
+Route::get('/dnd/login', array('as' => 'dnd.login', 'uses' => 'ResourceController@loginIndex'));
+Route::post('/dnd/login', array('as' => 'function.login', 'uses' => 'ResourceController@login'));
+
 Route::get('/dnd/basic-rules', array('as' => 'dnd.rules', 'uses' => 'ResourceController@rules'));
 
 Route::get('/dnd/race/{name}', array('as' => 'dnd.race', 'uses' => 'RaceController@show'));
