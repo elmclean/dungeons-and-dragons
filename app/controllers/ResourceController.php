@@ -38,7 +38,21 @@ class ResourceController extends \BaseController {
 	{
 		$inputs = Input::all();
 		authenticate($inputs['username'], $inputs['password']);
-		dd('in the login function');
+		
+		return Redirect::route('dnd.index');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 * GET /resource
+	 *
+	 * @return Response
+	 */
+	public function logout()
+	{
+		Session::flush();
+		
+		return Redirect::route('dnd.index');
 	}
 
 	/**

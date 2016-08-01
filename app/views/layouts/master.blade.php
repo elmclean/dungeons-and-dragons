@@ -62,11 +62,15 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i> Admin <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="{{ route('dnd.login') }}"><i class="fa fa-sign-out fa-fw"></i> Login</a>
+                        @if(userIsAdmin())
+                            <li><a href="{{ route('function.logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        @else
+                            <li><a href="{{ route('dnd.login') }}"><i class="fa fa-sign-out fa-fw"></i> Login</a>
                         </li>
+                        @endif
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -104,13 +108,16 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{ route('dnd.items') }}"><i class="glyphicon glyphicon-th-list"></i> Items List</a>
+                            <a href="{{ route('dnd.items') }}"><i class="glyphicon glyphicon-th-list"></i> Magic Item List</a>
                         </li>
                         <li>
                             <a href="{{ route('dnd.spells') }}"><i class="glyphicon glyphicon-th-list"></i> Spell List</a>
                         </li>
                         <li>
                             <a href="{{ route('dnd.monsters') }}"><i class="glyphicon glyphicon-th-list"></i> Monster List</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('dnd.homebrew') }}"><i class="fa fa-edit fa-fw"></i> Submit Homebrew</a>
                         </li>
                     </ul>
                 </div>

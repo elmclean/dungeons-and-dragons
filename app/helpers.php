@@ -14,8 +14,6 @@ function authenticate($username, $password) {
 	$admin = Admins::where('admin_username', $username);
 	$admin = Admins::where(['admin_username' => $username, 'admin_password' => $password])->first();
 
-	dd($admin);
-
 	if(!empty($admin)) {
 		Session::put('admin', true);
 		Session::put('username', $username);

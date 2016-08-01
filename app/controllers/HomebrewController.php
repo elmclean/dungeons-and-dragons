@@ -1,10 +1,10 @@
 <?php
 
-class ItemsController extends \BaseController {
+class HomebrewController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /items
+	 * GET /homebrew
 	 *
 	 * @return Response
 	 */
@@ -14,15 +14,16 @@ class ItemsController extends \BaseController {
 		$races = Races::get();
 		$classes = Classes::get();
 
-		// $all_items = AllItems::get();
-		$magic_items = MagicItems::get();
+		$levels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+		$types = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'];
+		$components = ['V', 'S', 'M'];
 
-		return View::make('allItems')->with(compact('races', 'classes', 'magic_items'));
+		return View::make('homebrew')->with(compact('races', 'classes', 'levels', 'types', 'components'));
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /items/create
+	 * GET /homebrew/create
 	 *
 	 * @return Response
 	 */
@@ -33,7 +34,7 @@ class ItemsController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /items
+	 * POST /homebrew
 	 *
 	 * @return Response
 	 */
@@ -44,7 +45,7 @@ class ItemsController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /items/{id}
+	 * GET /homebrew/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -56,7 +57,7 @@ class ItemsController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /items/{id}/edit
+	 * GET /homebrew/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -68,7 +69,7 @@ class ItemsController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /items/{id}
+	 * PUT /homebrew/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -80,7 +81,7 @@ class ItemsController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /items/{id}
+	 * DELETE /homebrew/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

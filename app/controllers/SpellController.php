@@ -39,7 +39,10 @@ class SpellController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$inputs = Input::all();
+
+		dd($inputs);
+		dd('store user submitted spell');
 	}
 
 	/**
