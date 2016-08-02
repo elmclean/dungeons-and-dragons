@@ -8,7 +8,7 @@ class Subraces extends \Eloquent {
 	/**
 	 * A subrace belongs to a race
 	 */
-	// public function races(){
-	// 	return $this->belongsTo('Races', 'race_id');
-	// }
+	public function races(){
+		return $this->belongsTo('Races');
+	}
 }

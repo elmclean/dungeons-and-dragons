@@ -33,3 +33,18 @@ Route::get('/dnd/item-list', array('as' => 'dnd.items', 'uses' => 'ItemsControll
 
 Route::get('/dnd/homebrew', array('as' => 'dnd.homebrew', 'uses' => 'HomebrewController@index'));
 Route::post('/dnd/homebrew/spell', array('as' => 'spell.store', 'uses' => 'SpellController@store'));
+
+
+Route::group(array('before' => 'userIsAdmin'), function(){
+	Route::get('/dnd/admin/spell-list', array('as' => 'admin.spells', 'uses' => 'SpellController@adminIndex'));
+	Route::get('dnd/admin/spell-list/{id}', array('as' => 'spell.show', 'uses' => 'SpellController@show'));
+	Route::post('dnd/admin/spell-list/{id}/update', array('as' => 'spell.update', 'uses' => 'SpellController@update'));
+	Route::delete('dnd/admin/spell-list/{id}/delete', array('as' => 'spell.destroy', 'uses' => 'SpellController@destroy'));
+});
+
+
+
+
+
+
+

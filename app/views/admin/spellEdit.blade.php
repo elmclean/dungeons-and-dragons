@@ -2,9 +2,8 @@
 @section('content')
 
 <div class="col-xs-12">
-	<h1 class="page-header">Submit 5e D&D Homebrew</h1>
-	<div class="alert alert-info" role="alert">Homebrew refers to  any of a number of creations or modifications by an individual or group on an amature level at home.</div>
-
+	<h1 class="page-header">Edit 5e Spell</h1>
+	
 	@if(Session::has('message'))
         <div class="alert alert-dismissible alert-success text-center">
             <p>{{ Session::get('message') }}</p>
@@ -17,13 +16,11 @@
         </div>
     @endif
 
-	<h3>Homebrew Spell</h3>
-
-	{{ Form::open(array('route' => ['spell.store'])) }}
+	{{ Form::open(array('route' => array('spell.update', $spell->spell_id))) }}
 		<div class="row">
 			<div class="form-group col-xs-8">
 				{{ Form::label('nameLabel','Spell Name:') }}
-				{{ Form::text('nameText', '', array('class' => 'form-control', 'id' => 'nameText', 'required' => 'required')) }}
+				{{ Form::text('nameText', $spell->spell_name, array('class' => 'form-control', 'id' => 'nameText', 'required' => 'required')) }}
 			</div>
 		</div>
 
@@ -32,7 +29,11 @@
 				{{ Form::label('levelLabel','Spell Level:') }}
 				<select class="form-control" id="level" name="level" required>
 					@foreach($levels as $level)
-						<option value="{{ $level }}">{{ $level }}</option>
+						@if($level == $spell->spell_level)
+							<option value="{{ $level }}" selected>{{ $level }}</option>
+						@else
+							<option value="{{ $level }}">{{ $level }}</option>
+						@endif
 					@endforeach
 				</select>
 			</div>
@@ -41,7 +42,11 @@
 				{{ Form::label('typeLabel','Spell Type:') }}
 				<select class="form-control" id="type" name="type" required>
 					@foreach($types as $type)
-						<option value="{{ $type }}">{{ $type }}</option>
+						@if($type == $spell->spell_type)
+							<option value="{{ $type }}" selected>{{ $type }}</option>
+						@else
+							<option value="{{ $type }}">{{ $type }}</option>
+						@endif
 					@endforeach
 				</select>
 			</div>
@@ -60,14 +65,14 @@
 		<div class="row">
 			<div class="form-group col-xs-8">
 				{{ Form::label('castingLabel',' Spell Casting Time:') }}
-				{{ Form::text('castingText', '', array('class' => 'form-control', 'id' => 'castingText')) }}
+				{{ Form::text('castingText', $spell->casting_time, array('class' => 'form-control', 'id' => 'castingText')) }}
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="form-group col-xs-8">
 				{{ Form::label('rangeLabel','Spell Range:') }}
-				{{ Form::text('rangeText', '', array('class' => 'form-control', 'id' => 'rangeText')) }}
+				{{ Form::text('rangeText', $spell->spell_range, array('class' => 'form-control', 'id' => 'rangeText')) }}
 			</div>
 		</div>
 
@@ -100,25 +105,25 @@
 		<div class="row">
 			<div class="form-group col-xs-8">
 				{{ Form::label('otherLabel','Other Components:') }}
-				{{ Form::text('componentsText', '', array('class' => 'form-control', 'id' => 'componentsText')) }}
+				{{ Form::text('componentsText', $spell->components, array('class' => 'form-control', 'id' => 'componentsText')) }}
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="form-group col-xs-8">
 				{{ Form::label('durationLabel','Spell Duration:') }}
-				{{ Form::text('durationText', '', array('class' => 'form-control', 'id' => 'durationText', 'required' => 'required')) }}
+				{{ Form::text('durationText', $spell->duration, array('class' => 'form-control', 'id' => 'durationText', 'required' => 'required')) }}
 			</div>
 		</div>
 
 		<div class="form-group">
 			{{ Form::label('descriptionLabel','Spell Description:') }}
-			{{ Form::textarea('descriptionText', '', array('class' => 'form-control', 'id' => 'descriptionText', 'required' => 'required')) }}
+			{{ Form::textarea('descriptionText', $spell->description, array('class' => 'form-control', 'id' => 'descriptionText', 'required' => 'required')) }}
 		</div>
 
 		<div class="form-group">
 			{{ Form::label('higherLabel','Spell Effect at Higher Levels:') }}
-			{{ Form::textarea('higherText', '', array('class' => 'form-control', 'id' => 'higherText')) }}
+			{{ Form::textarea('higherText', $spell->higher_levels, array('class' => 'form-control', 'id' => 'higherText')) }}
 		</div>
 
 		{{ Form::submit('Submit!', array('class' => 'btn btn-outline btn-primary')) }}
@@ -126,34 +131,5 @@
 	{{ Form::close() }}
 	<br>
 </div>
-
-
-
-<script type="text/javascript">
-
-	$(document).ready(function() {
-		var levels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-		var types = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'];
-		var components = ['V', 'S', 'M'];
-
-		// levels.forEach(function(level) {
-  //           $('#level').append($("<option value ='" + level + "'></option>")
-  //           .text(level));
-  //       });
-
-  //       types.forEach(function(type) {
-  //       	$('#type').append($("<option value ='" + type + "'></option>")
-  //           .text(type));
-  //       });
-
-  //       components.forEach(function(component) {
-  //       	$('#type').append($("<label class='checkbox-inline'></label>")
-  //           .append("<input type='checkbox' id='".component."' value='".component."'>")
-  //           .text(component);
-  //       });
-
-	});
-
-</script>
 
 @stop

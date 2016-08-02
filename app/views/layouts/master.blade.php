@@ -66,6 +66,8 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         @if(userIsAdmin())
+                            <li><a href="{{ route('admin.spells') }}"><i class="fa fa-edit fa-fw"></i> Spell Submissions</a></li>
+                            <li class="divider"></li>
                             <li><a href="{{ route('function.logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         @else
                             <li><a href="{{ route('dnd.login') }}"><i class="fa fa-sign-out fa-fw"></i> Login</a>

@@ -12,18 +12,32 @@
 	                <th>Name</th>
 	                <th>Level</th>
 	                <th>Type</th>
-	                <th>Casting Time</th>
-	                <th>Range</th>
+	                <th>Publish</th>
+	                <th>Edit</th>
+	                <th>Delete</th>
 	            </tr>
 	        </thead>
 	        <tbody>
 	        	@foreach($spells as $spell)
-	        		<tr data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">
-	        			<td>{{ $spell->spell_name }}</td>
-	        			<td>{{ $spell->spell_level }}</td>
-	        			<td>{{ $spell->spell_type }}</td>
-	        			<td>{{ $spell->casting_time }}</td>
-	        			<td>{{ $spell->spell_range }}</td>
+	        		<tr>
+	        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_name }}</td>
+	        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_level }}</td>
+	        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_type }}</td>
+	        			<td class="text-center">
+		                    <button type="submit" class="btn btn-primary">
+		                        <i class="fa fa-check-square-o" ></i>
+		                    </button>
+			            </td>
+	        			<td class="text-center">
+							<a class="btn btn-success" href="{{ route('spell.show', $spell->spell_id) }}" role="button"><i class="fa fa-gears"></i></a>
+						</td>
+						<td class="text-center">
+							{{ Form::open(array('route' => array('spell.destroy', $spell->spell_id))) }}
+		                    <button type="submit" class="btn btn-danger">
+		                        <i class="fa fa-times" ></i>
+		                    </button>
+		                    {{ Form::close() }}
+			            </td>
 	        		</tr>
 	        	@endforeach
 	        </tbody>
@@ -55,6 +69,7 @@
 <script>
 	$(document).ready(function() {
 		var spells = {{ json_encode($spells) }};
+		console.log(spells);
 		var selected = "";
 
 	    $('#spell-table').DataTable({
@@ -82,8 +97,6 @@
 			modal.find('.modal-body #description').text(selected["description"]);
 			modal.find('.modal-body #higher_levels').text(selected["higher_levels"]);
 		});
-
-
 	});
 </script>
 

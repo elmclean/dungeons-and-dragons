@@ -10,7 +10,7 @@ class Races extends \Eloquent {
 	/**
 	 * A race has many subraces
 	 */
-	// public function subraces(){
-	// 	return $this->hasMany('Subraces', 'race_id');
-	// }
+	public function subraces(){
+		return $this->hasMany('Subraces');
+	}
 }
