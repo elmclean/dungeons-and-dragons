@@ -38,6 +38,8 @@ Route::post('/dnd/homebrew/spell', array('as' => 'spell.store', 'uses' => 'Spell
 Route::group(array('before' => 'userIsAdmin'), function(){
 	Route::get('/dnd/admin/spell-list', array('as' => 'admin.spells', 'uses' => 'SpellController@adminIndex'));
 	Route::get('dnd/admin/spell-list/{id}', array('as' => 'spell.show', 'uses' => 'SpellController@show'));
+	Route::post('dnd/admin/spell-list/{id}/publish', array('as' => 'spell.publish', 'uses' => 'SpellController@publish'));
+	Route::post('dnd/admin/spell-list/{id}/unpublish', array('as' => 'spell.unpublish', 'uses' => 'SpellController@unpublish'));
 	Route::post('dnd/admin/spell-list/{id}/update', array('as' => 'spell.update', 'uses' => 'SpellController@update'));
 	Route::delete('dnd/admin/spell-list/{id}/delete', array('as' => 'spell.destroy', 'uses' => 'SpellController@destroy'));
 });

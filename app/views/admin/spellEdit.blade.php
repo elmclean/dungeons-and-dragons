@@ -42,7 +42,7 @@
 				{{ Form::label('typeLabel','Spell Type:') }}
 				<select class="form-control" id="type" name="type" required>
 					@foreach($types as $type)
-						@if($type == $spell->spell_type)
+						@if($type == $typeName)
 							<option value="{{ $type }}" selected>{{ $type }}</option>
 						@else
 							<option value="{{ $type }}">{{ $type }}</option>
@@ -54,12 +54,21 @@
 
 		<div class="form-group">
 			{{ Form::label('ritualLabel','Is this a Ritual Spell?') }}
-			<div class="radio-inline">
-				<label><input type="radio" name="ritualOption" id="no" value="no" checked> No</label>
-			</div>
-			<div class="radio-inline">
-				<label><input type="radio" name="ritualOption" id="no" value="yes">Yes</label>
-			</div>
+			@if($ritual)
+				<div class="radio-inline">
+					<label><input type="radio" name="ritualOption" id="no" value="no"> No</label>
+				</div>
+				<div class="radio-inline">
+					<label><input type="radio" name="ritualOption" id="no" value="yes" checked>Yes</label>
+				</div>
+			@else
+				<div class="radio-inline">
+					<label><input type="radio" name="ritualOption" id="no" value="no" checked> No</label>
+				</div>
+				<div class="radio-inline">
+					<label><input type="radio" name="ritualOption" id="no" value="yes">Yes</label>
+				</div>
+			@endif
 		</div>
 
 		<div class="row">
@@ -83,9 +92,15 @@
 				{{ Form::label('classLabel','Spell Classes:') }}
 				<br>
 				@foreach($classes as $class)
-					<label class="checkbox-inline">
-					 	<input type="checkbox" name="classCheck[]" id="{{ $class->class_name }}" value="{{ $class->class_name }}"> {{ $class->class_name }}
-					</label>
+					@if(in_array($class->class_name, $spellClasses))
+						<label class="checkbox-inline">
+						 	<input type="checkbox" name="classCheck[]" id="{{ $class->class_name }}" value="{{ $class->class_name }}" checked> {{ $class->class_name }}
+						</label>
+					@else
+						<label class="checkbox-inline">
+						 	<input type="checkbox" name="classCheck[]" id="{{ $class->class_name }}" value="{{ $class->class_name }}"> {{ $class->class_name }}
+						</label>
+					@endif
 				@endforeach
 			</div>
 		</div>
@@ -94,9 +109,15 @@
 			{{ Form::label('componentsLabel','Spell Components:') }}
 			<br>
 			@foreach($components as $component)
-				<label class="checkbox-inline">
-				 	<input type="checkbox" name="componentCheck[]" id="{{ $component }}" value="{{ $component }}"> {{ $component }}
-				</label>
+				@if(in_array($component, $primaryComponents))
+					<label class="checkbox-inline">
+					 	<input type="checkbox" name="componentCheck[]" id="{{ $component }}" value="{{ $component }}" checked> {{ $component }}
+					</label>
+				@else
+					<label class="checkbox-inline">
+					 	<input type="checkbox" name="componentCheck[]" id="{{ $component }}" value="{{ $component }}"> {{ $component }}
+					</label>
+				@endif
 			@endforeach
 		</div>
 
@@ -105,7 +126,7 @@
 		<div class="row">
 			<div class="form-group col-xs-8">
 				{{ Form::label('otherLabel','Other Components:') }}
-				{{ Form::text('componentsText', $spell->components, array('class' => 'form-control', 'id' => 'componentsText')) }}
+				{{ Form::text('componentsText', $otherComponents, array('class' => 'form-control', 'id' => 'componentsText')) }}
 			</div>
 		</div>
 
@@ -126,7 +147,8 @@
 			{{ Form::textarea('higherText', $spell->higher_levels, array('class' => 'form-control', 'id' => 'higherText')) }}
 		</div>
 
-		{{ Form::submit('Submit!', array('class' => 'btn btn-outline btn-primary')) }}
+		{{ Form::submit('Save Spell', array('class' => 'btn btn-outline btn-primary')) }}
+		<a href="{{ URL::previous() }}" class="btn btn-danger" role="button">Cancel</a>
 
 	{{ Form::close() }}
 	<br>

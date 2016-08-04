@@ -3,6 +3,11 @@
 
 <div class="col-xs-12">
 	<h1 class="page-header">5e Spell List</h1>
+	@if(Session::has('message'))
+        <div class="alert alert-dismissible alert-success text-center">
+            <p>{{ Session::get('message') }}</p>
+        </div>
+    @endif
 	<div class="alert alert-info" role="alert">Click on a spell in the table to see additional information.</div>
 
 	<div class="dataTable_wrapper">
@@ -24,15 +29,17 @@
 	        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_level }}</td>
 	        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_type }}</td>
 	        			<td class="text-center">
+	        				{{ Form::open(array('route' => array('spell.publish', $spell->spell_id))) }}
 		                    <button type="submit" class="btn btn-primary">
 		                        <i class="fa fa-check-square-o" ></i>
 		                    </button>
+		                    {{ Form::close() }}
 			            </td>
 	        			<td class="text-center">
 							<a class="btn btn-success" href="{{ route('spell.show', $spell->spell_id) }}" role="button"><i class="fa fa-gears"></i></a>
 						</td>
 						<td class="text-center">
-							{{ Form::open(array('route' => array('spell.destroy', $spell->spell_id))) }}
+							{{ Form::open(array('route' => array('spell.destroy', $spell->spell_id), 'method' => 'delete')) }}
 		                    <button type="submit" class="btn btn-danger">
 		                        <i class="fa fa-times" ></i>
 		                    </button>

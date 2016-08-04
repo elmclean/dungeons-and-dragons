@@ -12,19 +12,50 @@
 	                <th>Name</th>
 	                <th>Level</th>
 	                <th>Type</th>
-	                <th>Casting Time</th>
-	                <th>Range</th>
+	                @if(userIsAdmin())
+	                	<th>Unpublish</th>
+	                	<th>Update</th>
+	                	<th>Delete</th>
+	                @else
+		                <th>Casting Time</th>
+		                <th>Range</th>
+	                @endif
 	            </tr>
 	        </thead>
 	        <tbody>
 	        	@foreach($spells as $spell)
-	        		<tr data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">
-	        			<td>{{ $spell->spell_name }}</td>
-	        			<td>{{ $spell->spell_level }}</td>
-	        			<td>{{ $spell->spell_type }}</td>
-	        			<td>{{ $spell->casting_time }}</td>
-	        			<td>{{ $spell->spell_range }}</td>
-	        		</tr>
+        			@if(userIsAdmin())
+        				<tr>
+		        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_name }}</td>
+		        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_level }}</td>
+		        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_type }}</td>
+	        				<td class="text-center">
+	        					{{ Form::open(array('route' => array('spell.unpublish', $spell->spell_id))) }}
+			                    <button type="submit" class="btn btn-primary">
+			                        <i class="fa fa-check-square-o" ></i>
+			                    </button>
+			                    {{ Form::close() }}
+				            </td>
+		        			<td class="text-center">
+								<a class="btn btn-success" href="{{ route('spell.show', $spell->spell_id) }}" role="button"><i class="fa fa-gears"></i></a>
+							</td>
+							<td class="text-center">
+								{{ Form::open(array('route' => array('spell.destroy', $spell->spell_id), 'method' => 'delete')) }}
+			                    <button type="submit" class="btn btn-danger">
+			                        <i class="fa fa-times" ></i>
+			                    </button>
+			                    {{ Form::close() }}
+				            </td>
+				        </tr>
+        			@else
+        				<tr data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">
+		        			<td>{{ $spell->spell_name }}</td>
+		        			<td>{{ $spell->spell_level }}</td>
+		        			<td>{{ $spell->spell_type }}</td>
+		        			<td>{{ $spell->casting_time }}</td>
+		        			<td>{{ $spell->spell_range }}</td>
+		        		</tr>
+        			@endif
 	        	@endforeach
 	        </tbody>
 	    </table>
