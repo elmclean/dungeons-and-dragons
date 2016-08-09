@@ -34,6 +34,9 @@ Route::get('/dnd/item-list', array('as' => 'dnd.items', 'uses' => 'ItemsControll
 Route::get('/dnd/homebrew', array('as' => 'dnd.homebrew', 'uses' => 'HomebrewController@index'));
 Route::post('/dnd/homebrew/spell', array('as' => 'spell.store', 'uses' => 'SpellController@store'));
 
+Route::get('/dnd/random/encounter', array('as' => 'dnd.encounter', 'uses' => 'RandomController@encounterIndex'));
+Route::get('/dnd/random/magic-items', array('as' => 'dnd.magic', 'uses' => 'RandomController@magicIndex'));
+
 
 Route::group(array('before' => 'userIsAdmin'), function(){
 	Route::get('/dnd/admin/spell-list', array('as' => 'admin.spells', 'uses' => 'SpellController@adminIndex'));
