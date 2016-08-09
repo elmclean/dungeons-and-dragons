@@ -14,8 +14,12 @@ class SpellController extends \BaseController {
 		$races = Races::get();
 		$classes = Classes::get();
 
-		// grab all spells
-		$spells = Spells::where('enabled', 1)->get();
+		// all spells, no join
+		// $spells = Spells::with('Classes')->where('enabled', 1)->get();
+
+		// grab all spells join with classes for class names
+		$select = "SELECT spells_list.*, GROUP_CONCAT(classes.class_name SEPARATOR ', ') AS class_name FROM spells_list INNER JOIN class_spells ON spells_list.spell_id = class_spells.spell_id INNER JOIN classes ON class_spells.class_id = classes.class_id WHERE spells_list.enabled = 1 GROUP BY spells_list.spell_id";
+		$spells = DB::connection('mysql')->select($select);
 
 		return View::make('spells')->with(compact('races', 'classes', 'spells'));
 	}
@@ -32,8 +36,12 @@ class SpellController extends \BaseController {
 		$races = Races::get();
 		$classes = Classes::get();
 
+		// origical without joins
+		// $spells = Spells::where('enabled', 0)->get();
+
 		// grab all spells
-		$spells = Spells::where('enabled', 0)->get();
+		$select = "SELECT spells_list.*, GROUP_CONCAT(classes.class_name SEPARATOR ', ') AS class_name FROM spells_list INNER JOIN class_spells ON spells_list.spell_id = class_spells.spell_id INNER JOIN classes ON class_spells.class_id = classes.class_id WHERE spells_list.enabled = 0 GROUP BY spells_list.spell_id";
+		$spells = DB::connection('mysql')->select($select);
 
 		return View::make('admin.spells')->with(compact('races', 'classes', 'spells'));
 	}
@@ -210,7 +218,13 @@ class SpellController extends \BaseController {
 	 */
 	public function publish($id)
 	{
-		dd('in the publish function');
+		// grab spell from table
+		$spell = Spells::where('spell_id', $id)->first();
+		$spell->enabled = 1;  // set enabled to true
+		$spell->save();  // update entry in the table
+
+		$message = "The spell ".$spell->spell_name." has been published";
+		return Redirect::route('admin.spells')->withMessage($message);
 	}
 
 	/**
@@ -222,7 +236,13 @@ class SpellController extends \BaseController {
 	 */
 	public function unpublish($id)
 	{
-		dd('in the unpublish function');
+		// grab spell from table
+		$spell = Spells::where('spell_id', $id)->first();
+		$spell->enabled = 0;  // set enabled to false
+		$spell->save();  // update entry in the table
+
+		$message = "The spell ".$spell->spell_name." has been unpublished";
+		return Redirect::route('dnd.spells')->withMessage($message);
 	}
 
 	/**

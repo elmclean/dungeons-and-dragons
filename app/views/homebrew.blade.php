@@ -3,7 +3,10 @@
 
 <div class="col-xs-12">
 	<h1 class="page-header">Submit 5e D&D Homebrew</h1>
-	<div class="alert alert-info" role="alert">Homebrew refers to  any of a number of creations or modifications by an individual or group on an amature level at home.</div>
+	<div class="alert alert-info" role="alert">
+		<p>Homebrew refers to  any of a number of creations or modifications by an individual or group on an amature level at home.</p>
+		<strong>Before submitting, please check the spell list to see if the spell has already exists.</strong>
+	</div>
 
 	@if(Session::has('message'))
         <div class="alert alert-dismissible alert-success text-center">

@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="col-xs-12">
-	<h1 class="page-header">5e Spell List</h1>
+	<h1 class="page-header">5e Spell List Submissions</h1>
 	@if(Session::has('message'))
         <div class="alert alert-dismissible alert-success text-center">
             <p>{{ Session::get('message') }}</p>
@@ -17,6 +17,7 @@
 	                <th>Name</th>
 	                <th>Level</th>
 	                <th>Type</th>
+	                <th>Classes</th>
 	                <th>Publish</th>
 	                <th>Edit</th>
 	                <th>Delete</th>
@@ -28,6 +29,7 @@
 	        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_name }}</td>
 	        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_level }}</td>
 	        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->spell_type }}</td>
+	        			<td data-toggle="modal" data-target="#myModal" data-index="{{ $spell->spell_name }}">{{ $spell->class_name }}</td>
 	        			<td class="text-center">
 	        				{{ Form::open(array('route' => array('spell.publish', $spell->spell_id))) }}
 		                    <button type="submit" class="btn btn-primary">
@@ -62,6 +64,7 @@
 			</div>
 			<div class="modal-body">
 				<p id="spell_type"></p>
+				<p id="class_name"></p>
 				<p id="casting_time"></p>
 				<p id="spell_range"></p>
 				<p id="components"></p>
@@ -97,6 +100,7 @@
 			var modal = $(this);
 			modal.find('.modal-title').text(selected["spell_name"]);
 			modal.find('.modal-body #spell_type').text(selected["spell_type"]);
+			modal.find('.modal-body #class_name').text("Classes: " + selected["class_name"]);
 			modal.find('.modal-body #casting_time').text("Casting time: " + selected["casting_time"]);
 			modal.find('.modal-body #spell_range').text("Range: " + selected["spell_range"]);
 			modal.find('.modal-body #components').text("Components: " + selected["components"]);
