@@ -12,7 +12,6 @@
 			<li role="presentation" class="active"><a href="#intro" aria-controls="intro" role="tab" data-toggle="tab">Introduction</a></li>
 			<li role="presentation"><a href="#play" aria-controls="play" role="tab" data-toggle="tab">How to Play</a></li>
 			<li role="presentation"><a href="#adventure" aria-controls="adventure" role="tab" data-toggle="tab">Adventures</a></li>
-			<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
 		</ul>
 
 		<!-- Tab panes -->
@@ -119,11 +118,6 @@
 				<p>Magic is also a favored tool of villains. Many adventures are driven by the machinations of spellcasters who are hellbent on using magic for some ill end. A cult leader seeks to awaken a god who slumbers beneath the sea, a hag kidnaps youths to magically drain them of their vigor, a mad wizard labors to invest an army of automatons with a facsimile of life, a dragon begins a mystical ritual to rise up as a god of destruction—these are just a few of the magical threats that adventurers might face. With magic of their own, in the form of spells and magic items, the adventurers might prevail!</p>
 			</div>
 			<!-- end Dice tab -->
-
-			<div role="tabpanel" class="tab-pane fade" id="settings">
-				<br>
-				Settings
-			</div>
 		</div>
 	</div>
 </div>
