@@ -60,7 +60,6 @@ class ResourceController extends \BaseController {
 	{
 		// remove all information from the session
 		Session::flush();
-		
 		return Redirect::route('dnd.index');
 	}
 

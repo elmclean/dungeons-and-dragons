@@ -38,7 +38,7 @@ Route::get('/dnd/random/encounter', array('as' => 'dnd.encounter', 'uses' => 'Ra
 Route::get('/dnd/random/magic-items', array('as' => 'dnd.magic', 'uses' => 'RandomController@magicIndex'));
 
 // routes only accessable by logged in admins
-Route::group(array('before' => 'userIsAdmin'), function(){
+Route::group(array('before' => 'auth'), function(){
 	Route::get('/dnd/admin/spell-list', array('as' => 'admin.spells', 'uses' => 'SpellController@adminIndex'));
 	Route::get('dnd/admin/spell-list/{id}', array('as' => 'spell.show', 'uses' => 'SpellController@show'));
 	Route::post('dnd/admin/spell-list/{id}/publish', array('as' => 'spell.publish', 'uses' => 'SpellController@publish'));
@@ -46,10 +46,3 @@ Route::group(array('before' => 'userIsAdmin'), function(){
 	Route::post('dnd/admin/spell-list/{id}/update', array('as' => 'spell.update', 'uses' => 'SpellController@update'));
 	Route::delete('dnd/admin/spell-list/{id}/delete', array('as' => 'spell.destroy', 'uses' => 'SpellController@destroy'));
 });
-
-
-
-
-
-
-
