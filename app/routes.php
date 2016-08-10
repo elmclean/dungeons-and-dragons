@@ -37,7 +37,7 @@ Route::post('/dnd/homebrew/spell', array('as' => 'spell.store', 'uses' => 'Spell
 Route::get('/dnd/random/encounter', array('as' => 'dnd.encounter', 'uses' => 'RandomController@encounterIndex'));
 Route::get('/dnd/random/magic-items', array('as' => 'dnd.magic', 'uses' => 'RandomController@magicIndex'));
 
-
+// routes only accessable by logged in admins
 Route::group(array('before' => 'userIsAdmin'), function(){
 	Route::get('/dnd/admin/spell-list', array('as' => 'admin.spells', 'uses' => 'SpellController@adminIndex'));
 	Route::get('dnd/admin/spell-list/{id}', array('as' => 'spell.show', 'uses' => 'SpellController@show'));

@@ -33,7 +33,7 @@ class RandomController extends \BaseController {
 		$rarity = ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary'];
 		$types = ['Armor', 'Potion', 'Ring', 'Rod', 'Scroll', 'Staff', 'Wand', 'Weapon', 'Wondrous Item'];
 
-		$items = MagicItems::all();
+		$items = MagicItems::all();  // select all magic items
 
 		return View::make('magicDrop')->with(compact('races', 'classes', 'items', 'rarity', 'types'));
 	}

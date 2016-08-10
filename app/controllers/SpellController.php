@@ -14,7 +14,7 @@ class SpellController extends \BaseController {
 		$races = Races::get();
 		$classes = Classes::get();
 
-		// all spells, no join
+		// original without joins
 		// $spells = Spells::with('Classes')->where('enabled', 1)->get();
 
 		// grab all spells join with classes for class names
@@ -36,10 +36,10 @@ class SpellController extends \BaseController {
 		$races = Races::get();
 		$classes = Classes::get();
 
-		// origical without joins
+		// original without joins
 		// $spells = Spells::where('enabled', 0)->get();
 
-		// grab all spells
+		// select all spells from the table with info from the classes table
 		$select = "SELECT spells_list.*, GROUP_CONCAT(classes.class_name SEPARATOR ', ') AS class_name FROM spells_list INNER JOIN class_spells ON spells_list.spell_id = class_spells.spell_id INNER JOIN classes ON class_spells.class_id = classes.class_id WHERE spells_list.enabled = 0 GROUP BY spells_list.spell_id";
 		$spells = DB::connection('mysql')->select($select);
 

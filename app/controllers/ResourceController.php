@@ -36,12 +36,15 @@ class ResourceController extends \BaseController {
 	 */
 	public function login()
 	{
+		// grab all form input values
 		$inputs = Input::all();
+
+		// call to helpers.php function authenticate()
 		authenticate($inputs['username'], $inputs['password']);
 
-		if(userIsAdmin()){
+		if(userIsAdmin()){  // if authentication successful
 			return Redirect::route('dnd.index');
-		} else {
+		} else {  // if authentication not successul
 			$error = "Incorrect username or password";
 			return Redirect::route('dnd.login')->withError($error);
 		}
@@ -55,6 +58,7 @@ class ResourceController extends \BaseController {
 	 */
 	public function logout()
 	{
+		// remove all information from the session
 		Session::flush();
 		
 		return Redirect::route('dnd.index');

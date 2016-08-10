@@ -53,17 +53,20 @@
 
 <script>
 	$(document).ready(function() {
-		var items = {{ json_encode($magic_items) }};
-		var selected = "";
+		var items = {{ json_encode($magic_items) }};  // convert collection to JSON object
+		var selected = "";  // initialize empty string
 
+		// format searchable table
 	    $('#item-table').DataTable({
-	            responsive: true
+	        responsive: true
 	    });
 
+	    // show modal when table row is clicked
 	    $('#myModal').on('show.bs.modal', function (event) {
 			var link = $(event.relatedTarget); // link that triggered the modal
 			var index = link.data('index'); // extract info from data-index attribute
 
+			// loop through the items array object for selected table item
 			items.forEach(function(item){
 				if(index === item["item_name"]) {
 					selected = item;
@@ -71,6 +74,7 @@
 				}
 			});
 
+			// if columns are empty
 			if(selected['attunement'] == '') {
 				attunement = 'None';
 			}
@@ -78,6 +82,7 @@
 				requirements = 'None';
 			}
 
+			// add item info to the empty modal
 			var modal = $(this);
 			modal.find('.modal-title').text(selected["item_name"]);
 			modal.find('.modal-body #item_type').text(selected["rarity"] + " " + selected["item_type"]);
@@ -85,8 +90,6 @@
 			modal.find('.modal-body #requirements').text("Item Requirements: " + requirements);
 			modal.find('.modal-body #description').text(selected["item_description"]);
 		});
-
-
 	});
 </script>
 

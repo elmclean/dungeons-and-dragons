@@ -94,24 +94,27 @@
 
 <script>
 	$(document).ready(function() {
-		var spells = {{ json_encode($spells) }};
-		var selected = "";
+		var spells = {{ json_encode($spells) }};  // convert collection to JSON object
+		var selected = "";  // initialize empty string
 
+		// format searchable table
 	    $('#spell-table').DataTable({
-	            responsive: true
+	        responsive: true
 	    });
 
+	    // show modal when table row is clicked
 	    $('#myModal').on('show.bs.modal', function (event) {
 			var link = $(event.relatedTarget); // link that triggered the modal
 			var index = link.data('index'); // extract info from data-index attribute
 
+			// loop through the spells array object for selected table spell
 			spells.forEach(function(spell){
 				if(index === spell["spell_name"]) {
 					selected = spell;
-					console.log(selected);
 				}
 			});
 
+			// add item info to the empty modal
 			var modal = $(this);
 			modal.find('.modal-title').text(selected["spell_name"]);
 			modal.find('.modal-body #spell_type').text(selected["spell_type"]);
@@ -123,8 +126,6 @@
 			modal.find('.modal-body #description').text(selected["description"]);
 			modal.find('.modal-body #higher_levels').text(selected["higher_levels"]);
 		});
-
-
 	});
 </script>
 

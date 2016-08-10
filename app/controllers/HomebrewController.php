@@ -14,6 +14,7 @@ class HomebrewController extends \BaseController {
 		$races = Races::get();
 		$classes = Classes::get();
 
+		// data for select boxes
 		$levels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 		$types = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'];
 		$components = ['V', 'S', 'M'];

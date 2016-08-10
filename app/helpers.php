@@ -11,10 +11,12 @@
 *	@return the user's account level as an integer
 */
 function authenticate($username, $password) {
-	$admin = Admins::where('admin_username', $username);
+	// select admin from the table
 	$admin = Admins::where(['admin_username' => $username, 'admin_password' => $password])->first();
 
+	// if a match was found
 	if(!empty($admin)) {
+		// add user to the session
 		Session::put('admin', true);
 		Session::put('username', $username);
 	}
@@ -26,7 +28,7 @@ function authenticate($username, $password) {
  * @return the user's ID
  */
 function userIsAdmin() {
-	if(Session::get('admin')) {
+	if(Session::get('admin')) {  // if admin in the session
 		return true;
 	} else {
 		return false;

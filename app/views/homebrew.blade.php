@@ -130,33 +130,4 @@
 	<br>
 </div>
 
-
-
-<script type="text/javascript">
-
-	$(document).ready(function() {
-		var levels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-		var types = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'];
-		var components = ['V', 'S', 'M'];
-
-		// levels.forEach(function(level) {
-  //           $('#level').append($("<option value ='" + level + "'></option>")
-  //           .text(level));
-  //       });
-
-  //       types.forEach(function(type) {
-  //       	$('#type').append($("<option value ='" + type + "'></option>")
-  //           .text(type));
-  //       });
-
-  //       components.forEach(function(component) {
-  //       	$('#type').append($("<label class='checkbox-inline'></label>")
-  //           .append("<input type='checkbox' id='".component."' value='".component."'>")
-  //           .text(component);
-  //       });
-
-	});
-
-</script>
-
 @stop
