@@ -125,10 +125,10 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Other Tools<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ route('dnd.encounter') }}">Random Encounter Generator</a>
+                                    <a href="{{ route('dnd.magic') }}">Random Magic Item Generator</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('dnd.magic') }}">Random Magic Item Generator</a>
+                                    <a href="{{ route('dnd.encounter') }}">Random Encounter Generator</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
