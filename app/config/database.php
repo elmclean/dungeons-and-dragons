@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'elmclean',
 			'username'  => 'root',
-			'password'  => 'root',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
@@ -115,7 +115,7 @@ return array(
 
 		'default' => array(
 			'host'     => '127.0.0.1',
-			'port'     => 6379,
+			'port'     => 3306,
 			'database' => 0,
 		),
 
