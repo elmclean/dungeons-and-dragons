@@ -63,14 +63,14 @@
 		<div class="row">
 			<div class="form-group col-xs-8">
 				{{ Form::label('castingLabel',' Spell Casting Time:') }}
-				{{ Form::text('castingText', '', array('class' => 'form-control', 'id' => 'castingText')) }}
+				{{ Form::text('castingText', '', array('class' => 'form-control', 'id' => 'castingText', 'required' => 'required')) }}
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="form-group col-xs-8">
 				{{ Form::label('rangeLabel','Spell Range:') }}
-				{{ Form::text('rangeText', '', array('class' => 'form-control', 'id' => 'rangeText')) }}
+				{{ Form::text('rangeText', '', array('class' => 'form-control', 'id' => 'rangeText', 'required' => 'required')) }}
 			</div>
 		</div>
 

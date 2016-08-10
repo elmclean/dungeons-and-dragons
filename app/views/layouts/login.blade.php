@@ -60,10 +60,12 @@
         </nav>
 
         @if(Session::has('error'))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger text-center">
                 <h3>{{ Session::get('error') }}</h3>
             </div>
         @endif
+
+        <br>
 
         {{ Form::open(array('route' => ['function.login'])) }}
 

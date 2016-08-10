@@ -38,8 +38,13 @@ class ResourceController extends \BaseController {
 	{
 		$inputs = Input::all();
 		authenticate($inputs['username'], $inputs['password']);
-		
-		return Redirect::route('dnd.index');
+
+		if(userIsAdmin()){
+			return Redirect::route('dnd.index');
+		} else {
+			$error = "Incorrect username or password";
+			return Redirect::route('dnd.login')->withError($error);
+		}
 	}
 
 	/**
